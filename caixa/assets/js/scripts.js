@@ -157,7 +157,7 @@ const areaChartOptions = {
     },
   },
   colors: ['#00ab57', '#d50000'],
-  labels: ['Algo', 'Algo', 'Algo', 'Algo', 'Algo', 'Algo', 'Algo'],
+  labels: ['algo', 'Algo', 'Algo', 'Algo', 'Algo', 'Algo', 'Algo'],
   dataLabels: {
     enabled: false,
   },

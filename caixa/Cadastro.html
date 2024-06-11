@@ -7,13 +7,14 @@
   <link rel="stylesheet" href="assets/css/login.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script type="module" src="assets/js/register.js" defer></script>
 </head>
 <body>
   <div class="wrapper">
     <form action="">
       <h1>Cadastro</h1>
       <div class="input-box">
-        <input type="text" placeholder="E-mail" required>
+        <input type="text" placeholder="E-mail" id="email" required>
         <i class='ri-mail-line'></i>
       </div>
       <div class="input-box">
@@ -21,14 +22,69 @@
         <i class='bx bxs-user'></i>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Senha" required>
+        <input type="password" placeholder="Senha" id="password" required>
         <i class='bx bxs-lock-alt' ></i>
       </div>
-      <button type="submit" class="btn">Registre-se</button>
+      <button id="submit" type="submit" class="btn">Registre-se</button>
       <div class="register-link">
         <p>Já tem uma conta? <a href="login.html">Logar</a></p>
       </div>
     </form>
   </div>
+
+
+
+  <script>
+      // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDzvVWVOVcJ0qevAqwDzSnT-Smwf74EVyU",
+    authDomain: "caixa-f89aa.firebaseapp.com",
+    projectId: "caixa-f89aa",
+    storageBucket: "caixa-f89aa.appspot.com",
+    messagingSenderId: "913843692581",
+    appId: "1:913843692581:web:c527f5fcdebb9c7a634bcc",
+    measurementId: "G-R5X4EQMW6M"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const submit = document.getElementById('submit').value;
+  submit.addEventListener("click", function (event){
+    event.preventDefault()
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+
+    const user = userCredential.user;
+    alert("criando conta")
+
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert("erro")
+
+  });
+
+  })
+  </script>
 </body>
 </html>
