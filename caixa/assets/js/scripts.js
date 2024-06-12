@@ -1,3 +1,21 @@
+let x;
+
+fetch('http://localhost:3009/data-distance')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    x = data.dataDistance;
+    console.log(x); 
+  })
+  .catch(error => {
+    console.error('There was a problem with your fetch operation:', error);
+  });
+
+
 //HREFS
 document.getElementById("logoutIcon").addEventListener("click", function() {
   window.location.href = "index.html";
@@ -25,6 +43,7 @@ function closeSidebar() {
 // ---------- CHARTS ----------
 
 // BAR CHART
+
 const barChartOptions = {
   series: [
     {
